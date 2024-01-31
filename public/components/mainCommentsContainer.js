@@ -4,8 +4,7 @@ function createMainCommentsContainer() {
     const commentsContainer = document.createElement('div');
     commentsContainer.setAttribute('class', 'main-comments');
 
-    //! initialize comments store here.
-    // localStorage.setItem('comments', JSON.stringify([]));
+
     commentsContainer.appendChild(createInputBox());
     commentsContainer.appendChild(createCommentsBox());
 
