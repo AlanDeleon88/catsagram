@@ -74,6 +74,7 @@ body {
     cursor: pointer;
 
     border-radius: 4px;
+    user-select: none;
 }
 
 .vote-button:active {
