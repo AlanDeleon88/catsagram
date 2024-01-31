@@ -31,10 +31,11 @@ function createPicture() {
         //! make initial fetch
         fetch('https://api.thecatapi.com/v1/images/search')
             .then(res => {
+                console.log('PRE-PARSE', res.url);
                 return res.json();
             })
             .then(resBody => {
-                // console.log(resBody);
+                console.log('POST-PARSE', resBody[0].url);
                 const { url } = resBody[0];
                 const catImg = document.querySelector('.cat-img');
 

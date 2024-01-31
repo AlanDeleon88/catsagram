@@ -117,6 +117,17 @@ function addDeleteEvent(commentContainer) {
     commentContainer.addEventListener('click', event => {
         // console.log(commentContainer);
         if (event.target.id === 'delete-button') {
+            //! find the element in local storage and remove it from array
+
+            const commentText = commentContainer.children[0].innerText
+            const commentsDb = JSON.parse(localStorage.getItem('comments'));
+            const commentIndex = commentsDb.findIndex(el => el === commentText);
+            //! after we find the index of the comment, splice it out of array.
+            commentsDb.splice(commentIndex, 1);
+
+            //!update local storage array.
+            localStorage.setItem('comments', JSON.stringify(commentsDb));
+
             commentContainer.remove();
         }
     })
