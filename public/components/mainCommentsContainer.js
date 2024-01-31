@@ -84,7 +84,6 @@ function addCommentEventListner(commentButton) {
         const inputField = document.querySelector('.input-field');
         const commentBox = document.querySelector('.comments-box');
 
-
         // console.log(inputField.value);
         //!need to update local storage for comments here.
         const commentsDb = JSON.parse(localStorage.getItem('comments'));
@@ -94,7 +93,6 @@ function addCommentEventListner(commentButton) {
         if (commentsDb) {
             //! if it comments db exists, then push to existing.
             commentsDb.push(inputField.value);
-
 
         }
         else {
