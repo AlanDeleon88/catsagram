@@ -9,7 +9,7 @@ body {
 
 .main-pic {
     border: solid black 1px;
-    height: 1000px;
+    height: 900px;
     width: 700px;
 
     display: flex;
@@ -23,10 +23,10 @@ body {
 }
 
 .cat-img {
-    height: 60%;
     width: 90%;
+    height: 60%;
 
-    object-fit: fill;
+    /* object-fit: stretch; */
     border: 1px solid red;
 }
 
@@ -55,7 +55,7 @@ body {
 }
 
 .vote-counter-container {
-    font-size: 50px;
+    font-size: 30px;
     display: flex;
 }
 
@@ -77,8 +77,7 @@ body {
 }
 
 .vote-button:active {
-    height: 79%;
-    width: 39%;
+    transform: scale(.90);
 }
 
 .up-button:active {
@@ -93,7 +92,7 @@ body {
 .new-cat-button {
     width: 80%;
     height: 20%;
-    font-size: 30px;
+    font-size: 15px;
 
     border-radius: 5px;
 }

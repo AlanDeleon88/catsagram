@@ -23,26 +23,6 @@ function makeHeader() {
 function createPicture() {
     const catPic = document.createElement('img');
     catPic.setAttribute('class', 'cat-img');
-    if (localStorage.getItem('catUrl'))
-    {
-        catPic.src = localStorage.getItem('catUrl')
-    }
-    else {
-        //! make initial fetch
-        fetch('https://api.thecatapi.com/v1/images/search')
-            .then(res => {
-                return res.json();
-            })
-            .then(resBody => {
-                // console.log(resBody);
-                const { url } = resBody[0];
-                const catImg = document.querySelector('.cat-img');
-
-                catImg.src = url;
-                localStorage.setItem('catUrl', url);
-
-            })
-    }
 
     return catPic;
 }

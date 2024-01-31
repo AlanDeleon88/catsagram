@@ -7,7 +7,8 @@ function makeButtonContainer() {
 
     const upDownContainer = document.createElement('div');
     upDownContainer.setAttribute('class', 'up-down-container');
-    addVotesEvent(upDownContainer);
+
+
     upDownContainer.innerHTML =
         '<div class="up-button vote-button" id="up">⬆</div> <div class="down-button vote-button" id="down">⬇</div>'
 
@@ -18,7 +19,6 @@ function makeButtonContainer() {
 
     newCatBtn.innerText = 'NEW CAT'
 
-    addNewCatEvent(newCatBtn)
 
     mainBtnContainer.appendChild(newCatBtn);
 
@@ -29,75 +29,13 @@ function makeButtonContainer() {
 function makeVoteCounter() {
     const voteCounterContainer = document.createElement('div');
     let votes = 0;
-    //! need to check if local storage has data whethere to update or not.
-    if (localStorage.getItem('votes')) votes = localStorage.getItem('votes');
+
     voteCounterContainer.setAttribute('class', 'vote-counter-container');
 
     voteCounterContainer.innerHTML = `<div class="votes-text"> Votes: </div> <div class="votes-num" id="votes"> ${votes} </div>`
 
     return voteCounterContainer;
 }
-
-function addVotesEvent(voteCounter) {
-    // console.log(voteCounter);
-    voteCounter.addEventListener('click', event => {
-        // console.log('hello');
-        const button = event.target;
-
-        const voteCountEl = document.querySelector('#votes');
-        let voteNum = Number(voteCountEl.innerText);
-        if (button.id === 'up') {
-            voteNum++
-
-        }
-        else if (button.id === 'down') {
-            voteNum--
-        }
-        voteCountEl.innerText = voteNum;
-        localStorage.setItem('votes', voteNum);
-        //! update local storage here.
-        event.preventDefault();
-    })
-}
-
-function addNewCatEvent(catBtn) {
-    catBtn.addEventListener('click', event => {
-        // console.log('TEST!!');
-
-        //! need to reset votes and comments everytime a new image is fetched.
-
-        fetch('https://api.thecatapi.com/v1/images/search')
-            .then(res => {
-                return res.json();
-            })
-            .then(resBody => {
-                // console.log(resBody);
-                const { url } = resBody[0];
-                const catImg = document.querySelector('.cat-img');
-
-                catImg.src = url;
-                localStorage.setItem('catUrl', url);
-
-            })
-            .then( () => {
-                resetValues();
-            })
-
-        event.preventDefault();
-    })
-}
-
-function resetValues() {
-    const voteCount = document.querySelector('#votes');
-    const comments = document.querySelector('.comments-box');
-    //! reset local storage values too
-
-    voteCount.innerText = 0;
-    localStorage.setItem('votes', 0);
-    comments.innerHTML = '';
-    localStorage.setItem('comments', JSON.stringify([]));
-}
-
 
 
 export default makeButtonContainer
